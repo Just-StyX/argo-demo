@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class TestingController {
     @GetMapping("/testing")
     public String index(Model model) {
+        model.addAttribute("name", "J.S.L Group Inc");
         model.addAttribute("date", LocalDate.now());
         return "index";
     }
