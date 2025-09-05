@@ -3,7 +3,7 @@ on: push
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: just-styx/catalog-service-demo
+  IMAGE_NAME: just-styx/argo-catalog
   VERSION: 1.3
 
 jobs:
