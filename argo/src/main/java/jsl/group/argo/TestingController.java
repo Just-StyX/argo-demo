@@ -42,7 +42,7 @@ public class TestingController {
         } else {
             productList = restTemplate.getForObject("/products", ProductList.class);
             assert productList != null;
-            model.addAttribute("products", productList.products().subList(0, productList.products().size() - 1));
+            model.addAttribute("products", productList.products());
         }
         log.info("Products: {}", productList);
         model.addAttribute("name", "J.S.L Group Inc");
