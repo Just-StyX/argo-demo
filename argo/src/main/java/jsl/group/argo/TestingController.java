@@ -27,7 +27,9 @@ public class TestingController {
         log.info("Products: {}", productList);
         model.addAttribute("name", "J.S.L Group Inc");
         model.addAttribute("date", LocalDate.now());
-        model.addAttribute("products", productList);
+        assert productList != null;
+        model.addAttribute("products", productList.products());
+        model.addAttribute("productListDateTime", productList.localDateTime());
         return "index";
     }
 }
