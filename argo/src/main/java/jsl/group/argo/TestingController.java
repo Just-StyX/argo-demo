@@ -37,13 +37,11 @@ public class TestingController {
                     httpEntityWithHeaders(MultiValueMap.fromSingleValue(Map.of("x-dark-launch", xDarkLaunch))),
                     ProductList.class
             ).getBody();
-            assert productList != null;
-            model.addAttribute("products", productList.products());
         } else {
             productList = restTemplate.getForObject("/products", ProductList.class);
-            assert productList != null;
-            model.addAttribute("products", productList.products());
         }
+        assert productList != null;
+        model.addAttribute("products", productList.products());
         log.info("Products: {}", productList);
         model.addAttribute("name", "J.S.L Group Inc");
         model.addAttribute("date", LocalDate.now());
