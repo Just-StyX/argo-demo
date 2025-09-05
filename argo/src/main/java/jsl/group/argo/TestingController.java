@@ -1,6 +1,8 @@
 package jsl.group.argo;
 
 import jsl.group.argo.config.ProductList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import java.time.LocalDate;
 
 @Controller
 public class TestingController {
+    private static final Logger log = LoggerFactory.getLogger(TestingController.class);
     private final RestTemplate restTemplate;
 
     public TestingController(RestTemplateBuilder restTemplateBuilder, @Value("${app.catalog}") String catalogServiceUrl) {
@@ -21,6 +24,7 @@ public class TestingController {
     @GetMapping("/testing")
     public String index(Model model) {
         ProductList products = restTemplate.getForObject("/products", ProductList.class);
+        log.info("Products: {}", products);
         model.addAttribute("name", "J.S.L Group Inc");
         model.addAttribute("date", LocalDate.now());
         model.addAttribute("products", products);
