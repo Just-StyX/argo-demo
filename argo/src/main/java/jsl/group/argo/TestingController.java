@@ -23,11 +23,11 @@ public class TestingController {
 
     @GetMapping("/testing")
     public String index(Model model) {
-        ProductList products = restTemplate.getForObject("/products", ProductList.class);
-        log.info("Products: {}", products);
+        ProductList productList = restTemplate.getForObject("/products", ProductList.class);
+        log.info("Products: {}", productList);
         model.addAttribute("name", "J.S.L Group Inc");
         model.addAttribute("date", LocalDate.now());
-        model.addAttribute("products", products);
+        model.addAttribute("products", productList);
         return "index";
     }
 }
